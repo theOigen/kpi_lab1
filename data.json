@@ -21,15 +21,10 @@
             "phone_number": "123-487-13-37"
         },
         {
-            "id": 4,
-            "name": "Normal Name",
-            "phone_number": "123-456-78-90"
-        },
-        {
-            "id": 5,
-            "name": "Yo! Man!",
-            "phone_number": "228-133-77-23"
+            "id": 6,
+            "name": "New User",
+            "phone_number": "123-394-32-12"
         }
     ],
-    "next_id": 6
+    "next_id": 7
 }
