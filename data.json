@@ -1,12 +1,14 @@
 {
-  "contacts": [
-    {
-      "name": "Eugene",
-      "phone_number": "098-123-45-67"
-    },
-    {
-      "name": "Michael",
-      "phone_number": "067-123-45-67"
-    }
-  ]
+    "contacts": [
+        {
+            "id": 0,
+            "name": "dsad",
+            "phone_number": "dasdasd"
+        },
+        {
+            "id": 1,
+            "name": "Michael",
+            "phone_number": "092-094-14-88"
+        }
+    ]
 }
