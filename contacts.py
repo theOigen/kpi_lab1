@@ -1,21 +1,23 @@
-import json
+import fs
 
 
 def get_contacts():
-    file = open("data.json", "r")
-    json_object = json.load(file)
-    file.close()
-    return json_object
+    return fs.read_json_file(file_name="data.json")
 
 
 def get_contact_by_index(contact_index):
     return get_contacts()["contacts"][contact_index]
 
 
+def get_contact_by_id(contact_id):
+    contacts = get_contacts()["contacts"]
+    for contact in contacts:
+        if contact["id"] == contact_id:
+            return contact
+
+
 def save_contacts(src_object):
-    file = open("data.json", "w")
-    json.dump(src_object, file, indent=4, sort_keys=True)
-    file.close()
+    fs.save_json_file("data.json", src_object)
 
 
 def create_contact(name, phone_number):
@@ -32,8 +34,18 @@ def create_contact(name, phone_number):
     return new_contact
 
 
+def update_contact(updated):
+    dict_obj = get_contacts()
+    contacts = dict_obj["contacts"]
+    for index, contact in enumerate(contacts):
+        if contact["id"] == updated["id"]:
+            contacts[index] = updated
+    save_contacts(dict_obj)
+
+
 def delete_contact(contact_index):
     dict_obj = get_contacts()
     contacts = dict_obj["contacts"]
     contacts.pop(contact_index)
     save_contacts(dict_obj)
+
