@@ -1,8 +1,8 @@
 import npyscreen
-from ui_forms import \
+from ui.forms import \
+    create_contact_form as cc_form, \
     welcome_form as w_form, \
     all_contacts_form as ac_form, \
-    create_contact_form as cc_form, \
     edit_contact_form as ec_form
 
 

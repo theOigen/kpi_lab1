@@ -1,5 +1,5 @@
 import npyscreen
-import contacts
+from src import contacts
 
 
 class CreateContactForm(npyscreen.ActionForm):

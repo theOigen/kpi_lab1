@@ -1,4 +1,4 @@
-import fs
+from src import fs
 
 
 def get_contacts():

@@ -1,5 +1,5 @@
 import npyscreen
-import contacts
+from src import contacts
 
 
 class EditContactForm(npyscreen.ActionForm):
@@ -8,10 +8,7 @@ class EditContactForm(npyscreen.ActionForm):
         self.new_phone_number = self.add(npyscreen.TitleText, name="phone_number")
 
     def upd_contact(self):
-        dict_obj = contacts.get_contacts()
-        _contacts = dict_obj["contacts"]
-        _contacts[self.contact_index] = self.contact
-        contacts.save_contacts(dict_obj)
+        contacts.update_contact(self.contact)
         npyscreen.notify_wait("Contact has been updated! New contact: {}".format(self.contact))
         self.parentApp.update_contacts_form()
         self.parentApp.switchForm("MAIN")
@@ -32,9 +29,10 @@ class EditContactForm(npyscreen.ActionForm):
     def on_cancel(self):
         self.parentApp.setNextFormPrevious()
 
-    def setContact(self, contact_index):
-        self.contact_index = contact_index
-        self.contact = contacts.get_contact_by_index(contact_index)
+    def setContact(self, contact):
+        self.contact = contact
+        self.new_name.value = self.contact["name"]
+        self.new_phone_number.value = self.contact["phone_number"]
 
     def afterEditing(self):
         self.new_name.value = ""

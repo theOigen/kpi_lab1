@@ -19,12 +19,7 @@
             "id": 3,
             "name": "Danya",
             "phone_number": "123-487-13-37"
-        },
-        {
-            "id": 6,
-            "name": "New User",
-            "phone_number": "123-394-32-12"
         }
     ],
-    "next_id": 7
+    "next_id": 9
 }

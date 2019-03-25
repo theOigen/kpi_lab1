@@ -1,5 +1,5 @@
 import npyscreen
-import contacts
+from src import contacts
 
 
 class AllContactsForm(npyscreen.ActionFormV2):
@@ -20,7 +20,7 @@ class AllContactsForm(npyscreen.ActionFormV2):
             npyscreen.notify_wait("Please, to submit the form you must choose the contact and the action!",
                                   title="Error occurred")
         elif self.my_choice.get_selected_objects()[0] == self.menu[0]:
-            self.parentApp.getForm("EditCont").setContact(self.choosen_contact.value[0])
+            self.parentApp.getForm("EditCont").setContact(self.choosen_contact.get_selected_objects()[0])
             self.parentApp.switchForm("EditCont")
         elif self.my_choice.get_selected_objects()[0] == self.menu[1]:
             answer = npyscreen.notify_yes_no("Are you sure?", title="Delete Contact", editw=1)
