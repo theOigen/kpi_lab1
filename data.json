@@ -14,12 +14,7 @@
             "id": 2,
             "name": "Nastya",
             "phone_number": "123-456-78-90"
-        },
-        {
-            "id": 3,
-            "name": "Danya",
-            "phone_number": "123-487-13-37"
         }
     ],
-    "next_id": 9
+    "next_id": 10
 }
