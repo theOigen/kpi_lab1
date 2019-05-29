@@ -1,25 +1,25 @@
 {
     "contacts": [
         {
-            "id": 0,
+            "_id": 0,
             "name": "Oigen",
             "phone_number": "096-052-01-98"
         },
         {
-            "id": 1,
+            "_id": 1,
             "name": "Michael",
-            "phone_number": "092-094-14-88"
+            "phone_number": "063-221-34-25"
         },
         {
-            "id": 2,
-            "name": "Nastya",
-            "phone_number": "123-456-78-90"
+            "_id": 4,
+            "name": "dasdas",
+            "phone_number": "dsaldakd"
         },
         {
-            "id": 3,
-            "name": "Danya",
-            "phone_number": "123-487-13-37"
+            "_id": 5,
+            "name": "dasadsdx=)))",
+            "phone_number": "sadasd:)"
         }
     ],
-    "next_id": 9
+    "next_id": 6
 }

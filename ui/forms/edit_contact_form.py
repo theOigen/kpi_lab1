@@ -1,5 +1,4 @@
 import npyscreen
-from src import contacts
 
 
 class EditContactForm(npyscreen.ActionForm):
@@ -8,8 +7,11 @@ class EditContactForm(npyscreen.ActionForm):
         self.new_phone_number = self.add(npyscreen.TitleText, name="phone_number")
 
     def upd_contact(self):
-        contacts.update_contact(self.contact)
-        npyscreen.notify_wait("Contact has been updated! New contact: {}".format(self.contact))
+        if self.parentApp.contacts_manager.update_contact(self.contact) is True:
+            npyscreen.notify_wait("Contact has been updated! Contact: name: {}, phone_number: {}"
+                                  .format(self.contact.get_name(), self.contact.get_phone_number()))
+        else:
+            npyscreen.notify_wait("Oops.. Some error occurred")
         self.parentApp.update_contacts_form()
         self.parentApp.switchForm("MAIN")
 
@@ -18,21 +20,21 @@ class EditContactForm(npyscreen.ActionForm):
             npyscreen.notify_wait("Empty values, nothing to update here")
         else:
             if len(self.new_name.value) != 0 and len(self.new_phone_number.value) != 0:
-                self.contact["phone_number"] = self.new_phone_number.value
-                self.contact["name"] = self.new_name.value
+                self.contact.set_phone_number(self.new_phone_number.value)
+                self.contact.set_name(self.new_name.value)
             elif len(self.new_name.value) != 0:
-                self.contact["name"] = self.new_name.value
+                self.contact.set_name(self.new_name.value)
             elif len(self.new_phone_number.value) != 0:
-                self.contact["phone_number"] = self.new_phone_number.value
+                self.contact.set_phone_number(self.new_phone_number.value)
             self.upd_contact()
 
     def on_cancel(self):
         self.parentApp.setNextFormPrevious()
 
-    def setContact(self, contact):
+    def set_contact(self, contact):
         self.contact = contact
-        self.new_name.value = self.contact["name"]
-        self.new_phone_number.value = self.contact["phone_number"]
+        self.new_name.value = self.contact.get_name()
+        self.new_phone_number.value = self.contact.get_phone_number()
 
     def afterEditing(self):
         self.new_name.value = ""
