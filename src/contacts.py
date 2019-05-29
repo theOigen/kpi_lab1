@@ -1,59 +1,71 @@
 from src import fs
+from src.contact import Contact
 
 
-def get_contacts(file_name="data.json"):
-    return fs.read_json_file(file_name)
+class ContactsManager:
+    def __init__(self):
+        self.__contacts = []
+        self.__next_id = 0
 
+    def get_contacts(self):
+        return self.__contacts
 
-def compare_contacts(conts_1, conts_2):
-    for index, val in enumerate(conts_1):
-        if val["name"] != conts_2[index]["name"] \
-                    or val["phone_number"] != conts_2[index]["phone_number"]:
+    def get_contact_by_index(self, index):
+        if index >= len(self.__contacts) \
+                or abs(index) > len(self.__contacts):
+            return None
+        return self.__contacts[index]
+
+    def get_contact_by_id(self, _id):
+        for contact in self.__contacts:
+            if contact.get_id() == _id:
+                return contact
+        return None
+
+    @staticmethod
+    def validate_contact(contact):
+        name = contact.get_name()
+        _id = contact.get_id()
+        phone_number = contact.get_phone_number()
+        return name is not None and len(name) != 0 and _id is not None \
+            and _id >= 0 and phone_number is not None and len(phone_number) != 0
+
+    def add_contact(self, contact):
+        if ContactsManager.validate_contact(contact) is True and self.__contacts.count(contact) == 0:
+            contact.set_id(self.__next_id)
+            self.__contacts.append(contact)
+            self.__next_id += 1
+            return True
+        return False
+
+    def update_contact(self, updated):
+        if ContactsManager.validate_contact(updated) is False:
             return False
-    return True
+        for index, contact in enumerate(self.__contacts):
+            if contact.get_id() == updated.get_id():
+                self.__contacts[index] = updated
+                return True
+        return False
 
+    def delete_contact(self, contact_index):
+        if contact_index >= len(self.__contacts) \
+                or abs(contact_index) > len(self.__contacts):
+            return False
+        self.__contacts.pop(contact_index)
+        return True
 
-def get_contact_by_index(contact_index, file_name="data.json"):
-    return get_contacts(file_name)["contacts"][contact_index]
+    def save_contacts(self, file_name="data.json"):
+        fs.save_json_file(file_name, {
+            "contacts": [contact.to_dict() for contact in self.__contacts],
+            "next_id": self.__next_id
+        })
+        return True
 
-
-def get_contact_by_id(contact_id, file_name="data.json"):
-    contacts = get_contacts(file_name)["contacts"]
-    for contact in contacts:
-        if contact["id"] == contact_id:
-            return contact
-
-
-def save_contacts(src_object, file_name="data.json"):
-    fs.save_json_file(file_name, src_object)
-
-
-def create_contact(name, phone_number, file_name="data.json"):
-    new_contact = {
-        "id": -1,
-        "name": name,
-        "phone_number": phone_number
-    }
-    dict_obj = get_contacts(file_name)
-    new_contact["id"] = dict_obj["next_id"]
-    dict_obj["next_id"] += 1
-    dict_obj["contacts"].append(new_contact)
-    save_contacts(dict_obj, file_name)
-    return new_contact
-
-
-def update_contact(updated, file_name="data.json"):
-    dict_obj = get_contacts(file_name)
-    contacts = dict_obj["contacts"]
-    for index, contact in enumerate(contacts):
-        if contact["id"] == updated["id"]:
-            contacts[index] = updated
-    save_contacts(dict_obj, file_name)
-
-
-def delete_contact(contact_index, file_name="data.json"):
-    dict_obj = get_contacts(file_name)
-    contacts = dict_obj["contacts"]
-    contacts.pop(contact_index)
-    save_contacts(dict_obj, file_name)
-
+    def load_contacts(self, file_name="data.json"):
+        contacts_dict = fs.read_json_file(file_name)
+        contacts_array = contacts_dict["contacts"]
+        for contact_dict in contacts_array:
+            self.__contacts.append(Contact(contact_dict["_id"], contact_dict["name"],
+                                           contact_dict["phone_number"]))
+        self.__next_id = contacts_dict["next_id"]
+        return True
