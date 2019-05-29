@@ -46,12 +46,19 @@ class ContactsManager:
                 self.__contacts[index] = updated
                 return True
         return False
+    
 
     def delete_contact(self, contact_index):
         if contact_index >= len(self.__contacts) \
                 or abs(contact_index) > len(self.__contacts):
             return False
         self.__contacts.pop(contact_index)
+        return True
+    def delete_contact_by_id(self, id):
+        contact = [contact for contact in self.__contacts if contact.get_id() == id]
+        if len(contact) == 0:
+            return False
+        self.__contacts.remove(contact[0])
         return True
 
     def save_contacts(self, file_name="data.json"):

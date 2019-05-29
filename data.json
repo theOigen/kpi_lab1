@@ -2,13 +2,8 @@
     "contacts": [
         {
             "_id": 0,
-            "name": "Oigen",
-            "phone_number": "096-052-01-98"
-        },
-        {
-            "_id": 1,
-            "name": "Michael",
-            "phone_number": "063-221-34-25"
+            "name": "misha",
+            "phone_number": "000"
         },
         {
             "_id": 4,
@@ -19,7 +14,12 @@
             "_id": 5,
             "name": "dasadsdx=)))",
             "phone_number": "sadasd:)"
+        },
+        {
+            "_id": 6,
+            "name": "Misha Moroz",
+            "phone_number": "0666460177"
         }
     ],
-    "next_id": 6
+    "next_id": 8
 }
