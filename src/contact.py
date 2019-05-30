@@ -1,4 +1,19 @@
-class Contact():
+"""
+This is "Contact" module
+
+>>> contact = Contact(0, "eugene", "+380-96-052-01-98")
+
+>>> contact.get_id()
+0
+
+>>> contact.get_name()
+'eugene'
+>>> contact.get_phone_number()
+'+380-96-052-01-98'
+"""
+
+
+class Contact:
     def __init__(self, _id, name, phone_number):
         self.__id = _id
         self.__name = name
@@ -28,3 +43,8 @@ class Contact():
             "name": self.__name,
             "phone_number": self.__phone_number
         }
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
