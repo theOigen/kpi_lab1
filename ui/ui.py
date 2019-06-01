@@ -16,7 +16,8 @@ class ConsoleUI(npyscreen.NPSAppManaged):
         self.contacts_manager.load_contacts()
         self.addForm("MAIN", w_form.WelcomeForm, name="Main Menu")
         self.addForm("GetCont", ac_form.AllContactsForm, name="All Contacts")
-        self.addForm("CreateCont", cc_form.CreateContactForm, name="Create Contact")
+        self.addForm("CreateCont", cc_form.CreateContactForm,
+                     name="Create Contact")
         self.addForm("EditCont", ec_form.EditContactForm, name="Edit Contact")
 
     def update_contacts_form(self):

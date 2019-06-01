@@ -1,32 +1,38 @@
-from src import fs
 from src.contact import Contact
+from src.fs import save_json_file, read_json_file
 
 """
 The "ContactsManager" module
 
-The module contains a constructor, getter and setter functions to access structure fields
+The module contains a constructor, getter and setter functions
+to access structure fields
 
 """
+
 
 class ContactsManager:
     """
     Initialization
         A constructure function initialize the new object with the next fields:
             __contacts - array of Contacts which we store
-            __next_id - the numerical value intended to be set as __id field of next contact we will add
-        The __next_id is never decreases.
-        The constructure function DOES NOT receive the arguments which correspond to each field
+            __next_id - the numerical value intended to be set as __id field
+             of next contact we will add
+             The __next_id is never decreases.
+        The constructure function DOES NOT receive the arguments
+        which correspond to each field
         By default __contacts is an empty array, __next_id is 0
         >>> contacts_manager1 = ContactsManager()
         >>> contacts_manager2 = ContactsManager()
 
     Adding to contacts array
         By calling an add_contact function we can append new Contact to array.
-        Function accepts the new Contact, and return boolean value which means was it added or not;
+        Function accepts the new Contact, and return boolean value
+        which means was it added or not;
         Conditions for the impossibility of adding:
             Added contact there has already been in our collection
             Added contact contained invalid data
-        The validity of contact data is been checking by function validate_contact (see below)
+        The validity of contact data is been checking
+        by function validate_contact (see below)
         The ID of added item is changed by __next_id value
 
         >>> invalid_contact = Contact("", "", "")
@@ -46,7 +52,7 @@ class ContactsManager:
         0
         >>> valid_contact2.get_id()
         1
-    
+
     Validation of Contact
         Valid Contact has
             __id:
@@ -88,12 +94,13 @@ class ContactsManager:
 
     Getting from array of Contacts
         There are two functions to get Contact from array
-            get_contact_by_index - attempt to get Contact from array by its index
+            get_contact_by_index - attempt to get Contact from array by
+            its index
             get_contact_by_id - attempt to get Contact from array by its ID
         In case functions cannot find a Contact, they return None
         >>> contacts_manager1.get_contact_by_index(1) == valid_contact2
         True
-        >>> contacts_manager1.get_contact_by_index(2) == None
+        >>> contacts_manager1.get_contact_by_index(2) is None
         True
         >>> contacts_manager1.get_contact_by_id(0) == valid_contact1
         True
@@ -103,7 +110,8 @@ class ContactsManager:
         AttributeError: 'NoneType' object has no attribute 'to_dict'
 
         Also we can gat all contacts by using get_contacts function
-        >>> contacts_manager1.get_contacts() == [valid_contact1, valid_contact2]
+        >>> contacts_manager1.get_contacts() == [valid_contact1, \
+        valid_contact2]
         True
         >>> contacts_manager2.get_contacts() == []
         True
@@ -115,23 +123,36 @@ class ContactsManager:
         Traceback (most recent call last):
             ...
         IndexError: list index out of range
-            
+
     Updating
         Module provide the ability to change the list of contacts
-        We can change contact and put it to an array. This Contact will replace the old version of self
+        We can change contact and put it to an array.
+        This Contact will replace the old version of self
         If old version was not found, function returns False
         If old version was found, function returns True
-        >>> valid_contact3 = Contact(valid_contact1.get_id(), valid_contact1.get_name(), valid_contact1.get_phone_number())
-        >>> valid_contact4 = Contact(valid_contact1.get_id(), valid_contact1.get_name(), valid_contact1.get_phone_number())
+        >>> valid_contact3 = Contact(valid_contact1.get_id(), \
+        valid_contact1.get_name(), valid_contact1.get_phone_number())
+        >>> valid_contact4 = Contact(valid_contact1.get_id(), \
+        valid_contact1.get_name(), valid_contact1.get_phone_number())
         >>> valid_contact3.set_name("new name")
 
-        Contact3 will replace contact1 because contacts will be equal, if their identifiers are equal
+        Contact3 will replace contact1 because contacts will be equal,
+        if their identifiers are equal
         >>> contacts_manager1.update_contact(valid_contact3)
         True
+
+        >>> invalid_contact = Contact(0, "ds", "d")
+        >>> contacts_manager1.add_contact(invalid_contact)
+        True
+        >>> invalid_contact.set_name(None)
+        >>> contacts_manager1.update_contact(invalid_contact)
+        False
+
         >>> contacts_manager1.get_contacts()[0].to_dict()
         {'_id': 0, 'name': 'new name', 'phone_number': '+380-96-052-01-98'}
 
-        If we change the id of an updated Contact, we wont be able to save chages
+        If we change the id of an updated Contact, we wont be able
+        to save chages
         >>> valid_contact1.set_id(100)
         >>> contacts_manager1.update_contact(valid_contact1)
         False
@@ -147,15 +168,15 @@ class ContactsManager:
         >>> contacts_manager1.add_contact(valid_contact1)
         True
         >>> contacts_manager1.get_next_id()
-        4
+        5
         >>> len(contacts_manager1.get_contacts())
-        4
+        5
         >>> contacts_manager1.delete_contact(0)
         True
         >>> contacts_manager1.get_next_id()
-        4
+        5
         >>> len(contacts_manager1.get_contacts())
-        3
+        4
 
         Deleting by ID
         >>> contacts_manager1.delete_contact_by_id(valid_contact4.get_id())
@@ -170,31 +191,33 @@ class ContactsManager:
         False
         >>> len(contacts_manager2.get_contacts())
         0
-    
+
     Save to file and load from file
-        Module provide the ability store in ind read from file the list of contacts 
-        >>> contacts_manager1.save_contacts("doctest_folder_storage/DOCTESTING_FILE__contacts_manager1__saved_data")
+        Module provide the ability store in ind read from file
+        the list of contacts
+        >>> contacts_manager1.save_contacts("./data_files/test_file_1.json")
         True
-        >>> contacts_manager2.save_contacts("doctest_folder_storage/DOCTESTING_FILE__contacts_manager2__saved_data")
+        >>> contacts_manager2.save_contacts("./data_files/test_file_2.json")
         True
 
-        After loading from a file, the addresses of objects in memory will change.
+        After loading from a file, the addresses of objects in memory
+        will change.
         Objects will not be equal to each other, so we will use some trick
         >>> contacts_manager3 = ContactsManager()
-        >>> contacts_manager3.load_contacts("doctest_folder_storage/DOCTESTING_FILE__contacts_manager1__saved_data")
+        >>> contacts_manager3.load_contacts("./data_files/test_file_1.json")
         True
-        >>> contacts_manager3.get_contacts()[0].to_dict() == contacts_manager1.get_contacts()[0].to_dict()
+        >>> contacts_manager3.get_contacts()[0].to_dict() == \
+        contacts_manager1.get_contacts()[0].to_dict()
         True
 
         Since the arrays are empty, they are equal anyway
         >>> contacts_manager4 = ContactsManager()
-        >>> contacts_manager4.load_contacts("doctest_folder_storage/DOCTESTING_FILE__contacts_manager2__saved_data")
+        >>> contacts_manager4.load_contacts("./data_files/test_file_2.json")
         True
-        >>> contacts_manager4.get_contacts() == contacts_manager2.get_contacts()
+        >>> contacts_manager4.get_contacts() == \
+        contacts_manager2.get_contacts()
         True
     """
-
-
     def __init__(self):
         self.__contacts = []
         self.__next_id = 0
@@ -221,10 +244,12 @@ class ContactsManager:
         phone_number = contact.get_phone_number()
         return isinstance(name, str) and name is not None and len(name) != 0 \
             and isinstance(_id, int) and _id is not None and _id >= 0 \
-            and isinstance(phone_number, str)and phone_number is not None and len(phone_number) != 0
+            and isinstance(phone_number, str) and phone_number is not None \
+            and len(phone_number) != 0
 
     def add_contact(self, contact):
-        if ContactsManager.validate_contact(contact) is True and self.__contacts.count(contact) == 0:
+        if ContactsManager.validate_contact(
+                contact) is True and self.__contacts.count(contact) == 0:
             contact.set_id(self.__next_id)
             self.__contacts.append(contact)
             self.__next_id += 1
@@ -239,7 +264,6 @@ class ContactsManager:
                 self.__contacts[index] = updated
                 return True
         return False
-    
 
     def delete_contact(self, contact_index):
         if contact_index >= len(self.__contacts) \
@@ -247,28 +271,39 @@ class ContactsManager:
             return False
         self.__contacts.pop(contact_index)
         return True
-    def delete_contact_by_id(self, id):
-        contact = [contact for contact in self.__contacts if contact.get_id() == id]
+
+    def delete_contact_by_id(self, contact_id):
+        contact = [contact for contact in self.__contacts if
+                   contact.get_id() == contact_id]
         if len(contact) == 0:
             return False
         self.__contacts.remove(contact[0])
         return True
 
-    def save_contacts(self, file_name="data.json"):
-        fs.save_json_file(file_name, {
+    def save_contacts(self, file_name="/Users/eugenezayats/Documents"
+                                      "/GitHub/kpi_lab1/data.json"):
+        save_json_file(file_name, {
             "contacts": [contact.to_dict() for contact in self.__contacts],
             "next_id": self.__next_id
         })
         return True
 
-    def load_contacts(self, file_name="data.json"):
-        contacts_dict = fs.read_json_file(file_name)
+    def load_contacts(self, file_name="/Users/eugenezayats/Documents"
+                                      "/GitHub/kpi_lab1/data.json"):
+        contacts_dict = read_json_file(file_name)
         contacts_array = contacts_dict["contacts"]
         for contact_dict in contacts_array:
-            self.__contacts.append(Contact(contact_dict["_id"], contact_dict["name"],
-                                           contact_dict["phone_number"]))
+            self.__contacts.append(
+                Contact(contact_dict["_id"], contact_dict["name"],
+                        contact_dict["phone_number"]))
         self.__next_id = contacts_dict["next_id"]
         return True
 
     def get_next_id(self):
         return self.__next_id
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()

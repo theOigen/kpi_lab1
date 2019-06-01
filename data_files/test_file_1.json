@@ -1,8 +1,20 @@
 {
     "contacts": [
         {
-            "name": "User1",
-            "phone_number": "123-322-32-32"
+            "_id": 1,
+            "name": "eugene",
+            "phone_number": "+380-96-052-01-98"
+        },
+        {
+            "_id": 2,
+            "name": null,
+            "phone_number": "d"
+        },
+        {
+            "_id": 4,
+            "name": "eugene",
+            "phone_number": "+380-96-052-01-98"
         }
-    ]
+    ],
+    "next_id": 5
 }
