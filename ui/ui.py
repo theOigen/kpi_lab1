@@ -13,6 +13,10 @@ class ConsoleUI(npyscreen.NPSAppManaged):
         self.contacts_manager = ContactsManager()
 
     def onStart(self):
+        """
+        Lifecycle function that called when app starts.
+        Loads contacts and set all UI forms
+        """
         self.contacts_manager.load_contacts()
         self.addForm("MAIN", w_form.WelcomeForm, name="Main Menu")
         self.addForm("GetCont", ac_form.AllContactsForm, name="All Contacts")
@@ -21,7 +25,13 @@ class ConsoleUI(npyscreen.NPSAppManaged):
         self.addForm("EditCont", ec_form.EditContactForm, name="Edit Contact")
 
     def update_contacts_form(self):
+        """
+        Function that updates All Contacts form
+        """
         self.getForm("GetCont").upd()
 
     def onCleanExit(self):
+        """
+        Lifecycle function that called when app exit.
+        """
         self.contacts_manager.save_contacts()
