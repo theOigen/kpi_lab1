@@ -15,7 +15,8 @@ class ContactApi(Resource):
         self.reqparse.add_argument('phone_number', type=str, default="None",
                                    location='json')
         self.contacts_manager = ContactsManager()
-        self.data_path = "data.json"
+        self.data_path = "/Users/eugenezayats/Documents/" \
+                         "GitHub/kpi_lab1/data_files/test_file_2.json"
         super(ContactApi, self).__init__()
 
     def get(self, id):
@@ -48,7 +49,8 @@ class ContactManagerAPI(Resource):
         self.reqparse.add_argument('phone_number', type=str, required=True,
                                    location='json')
         self.contacts_manager = ContactsManager()
-        self.data_path = "data.json"
+        self.data_path = "/Users/eugenezayats/Documents/" \
+                         "GitHub/kpi_lab1/data_files/test_file_2.json"
         super(ContactManagerAPI, self).__init__()
 
     def get(self):
