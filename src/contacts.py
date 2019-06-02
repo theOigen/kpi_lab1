@@ -219,19 +219,34 @@ class ContactsManager:
         True
     """
     def __init__(self):
+        """
+        Initializator of an object
+        """
         self.__contacts = []
         self.__next_id = 0
 
     def get_contacts(self):
+        """
+        :return: contacts array
+        """
         return self.__contacts
 
     def get_contact_by_index(self, index):
+        """
+        :param index: an integer indicating the
+        position of the element in the array
+        :return: None if index is invalid OR element from array
+        """
         if index >= len(self.__contacts) \
                 or abs(index) > len(self.__contacts):
             return None
         return self.__contacts[index]
 
     def get_contact_by_id(self, _id):
+        """
+        :param _id: an integer indicating the id of the element
+        :return: None if there's no contact with such id OR element from array
+        """
         for contact in self.__contacts:
             if contact.get_id() == _id:
                 return contact
@@ -239,6 +254,10 @@ class ContactsManager:
 
     @staticmethod
     def validate_contact(contact):
+        """
+        :param contact: Contact object
+        :return: True/False depending on success/failure validation
+        """
         name = contact.get_name()
         _id = contact.get_id()
         phone_number = contact.get_phone_number()
@@ -248,6 +267,10 @@ class ContactsManager:
             and len(phone_number) != 0
 
     def add_contact(self, contact):
+        """
+        :param contact: Contact object to add
+        :return: True/False depending on success/failure adding
+        """
         if ContactsManager.validate_contact(
                 contact) is True and self.__contacts.count(contact) == 0:
             contact.set_id(self.__next_id)
@@ -257,6 +280,10 @@ class ContactsManager:
         return False
 
     def update_contact(self, updated):
+        """
+        :param updated: Contact object to update
+        :return: True/False depending on success/failure updating
+        """
         if ContactsManager.validate_contact(updated) is False:
             return False
         for index, contact in enumerate(self.__contacts):
@@ -266,6 +293,11 @@ class ContactsManager:
         return False
 
     def delete_contact(self, contact_index):
+        """
+        :param contact_index: an integer indicating the
+        position of the element in the array
+        :return: True/False depending on success/failure deleting
+        """
         if contact_index >= len(self.__contacts) \
                 or abs(contact_index) > len(self.__contacts):
             return False
@@ -273,6 +305,10 @@ class ContactsManager:
         return True
 
     def delete_contact_by_id(self, contact_id):
+        """
+        :param contact_id: an integer indicating the id of the element
+        :return: True/False depending on success/failure deleting
+        """
         contact = [contact for contact in self.__contacts if
                    contact.get_id() == contact_id]
         if len(contact) == 0:
@@ -282,6 +318,11 @@ class ContactsManager:
 
     def save_contacts(self, file_name="/Users/eugenezayats/Documents"
                                       "/GitHub/kpi_lab1/data.json"):
+        """
+        Function that save cache to file
+        :param file_name: file to save
+        :return: True which means a success of saving
+        """
         save_json_file(file_name, {
             "contacts": [contact.to_dict() for contact in self.__contacts],
             "next_id": self.__next_id
@@ -290,6 +331,11 @@ class ContactsManager:
 
     def load_contacts(self, file_name="/Users/eugenezayats/Documents"
                                       "/GitHub/kpi_lab1/data.json"):
+        """
+        Function that load cache from file
+        :param file_name: file to load
+        :return:
+        """
         contacts_dict = read_json_file(file_name)
         contacts_array = contacts_dict["contacts"]
         for contact_dict in contacts_array:
@@ -300,10 +346,12 @@ class ContactsManager:
         return True
 
     def get_next_id(self):
+        """
+        :return: __next_id propery
+        """
         return self.__next_id
 
 
 if __name__ == "__main__":
     import doctest
-
     doctest.testmod()
