@@ -19,7 +19,27 @@
             "_id": 6,
             "name": "Misha Moroz",
             "phone_number": "0666460177"
+        },
+        {
+            "_id": 9,
+            "name": "test_user",
+            "phone_number": "1111"
+        },
+        {
+            "_id": 10,
+            "name": "updated_contact",
+            "phone_number": "0000"
+        },
+        {
+            "_id": 12,
+            "name": "test_user",
+            "phone_number": "1111"
+        },
+        {
+            "_id": 13,
+            "name": "updated_contact",
+            "phone_number": "0000"
         }
     ],
-    "next_id": 9
+    "next_id": 15
 }
