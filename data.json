@@ -29,7 +29,17 @@
             "_id": 10,
             "name": "updated_contact",
             "phone_number": "0000"
+        },
+        {
+            "_id": 12,
+            "name": "test_user",
+            "phone_number": "1111"
+        },
+        {
+            "_id": 13,
+            "name": "updated_contact",
+            "phone_number": "0000"
         }
     ],
-    "next_id": 12
+    "next_id": 15
 }

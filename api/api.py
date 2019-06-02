@@ -18,8 +18,6 @@ class ContactApi(Resource):
         self.data_path = "data.json"
         super(ContactApi, self).__init__()
 
-    def set_data_location(new_data_loc):
-        self.data_path = new_data_loc
     def get(self, id):
         self.contacts_manager.load_contacts(self.data_path)
         requested_contact = self.contacts_manager.get_contact_by_id(id)
