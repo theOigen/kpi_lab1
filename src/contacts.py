@@ -200,6 +200,14 @@ class ContactsManager:
         >>> contacts_manager2.save_contacts("./data_files/test_file_2.json")
         True
 
+        If loading failed – contacts_manager doesn't change his fields
+        >>> conts_len = len(contacts_manager2.get_contacts())
+        >>> contacts_manager2.load_contacts("./sx,as./ds.json")
+        False
+        >>> conts_len_again = len(contacts_manager2.get_contacts())
+        >>> conts_len == conts_len_again
+        True
+
         After loading from a file, the addresses of objects in memory
         will change.
         Objects will not be equal to each other, so we will use some trick
@@ -255,6 +263,7 @@ class ContactsManager:
     @staticmethod
     def validate_contact(contact):
         """
+        Static method
         :param contact: Contact object
         :return: True/False depending on success/failure validation
         """
@@ -334,9 +343,11 @@ class ContactsManager:
         """
         Function that load cache from file
         :param file_name: file to load
-        :return:
+        :return: True/False depending on success/failure loading
         """
         contacts_dict = read_json_file(file_name)
+        if "error" in contacts_dict:
+            return False
         contacts_array = contacts_dict["contacts"]
         for contact_dict in contacts_array:
             self.__contacts.append(

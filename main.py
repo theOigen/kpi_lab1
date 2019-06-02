@@ -1,5 +1,5 @@
-from ui import ui
+from ui.ui import ConsoleUI
 
 if __name__ == "__main__":
-    UI = ui.ConsoleUI()
+    UI = ConsoleUI()
     UI.run()

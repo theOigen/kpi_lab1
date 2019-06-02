@@ -14,8 +14,7 @@ def read_json_file(file_name):
         return obj
     except (OSError, IOError):
         return {
-            "contacts": [],
-            "next_id": 0
+            "error": "File not found"
         }
 
 

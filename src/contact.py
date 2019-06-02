@@ -122,7 +122,7 @@ class Contact:
 
     def get_phone_number(self):
         """
-        :return: return phone number of a contact
+        :return: phone number of a contact
         """
         return self.__phone_number
 
