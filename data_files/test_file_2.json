@@ -1,4 +1,35 @@
 {
-    "contacts": [],
-    "next_id": 0
+    "contacts": [
+        {
+            "_id": 0,
+            "name": "test_user",
+            "phone_number": "1111"
+        },
+        {
+            "_id": 1,
+            "name": "updated_contact",
+            "phone_number": "0000"
+        },
+        {
+            "_id": 3,
+            "name": "test_user",
+            "phone_number": "1111"
+        },
+        {
+            "_id": 4,
+            "name": "updated_contact",
+            "phone_number": "0000"
+        },
+        {
+            "_id": 6,
+            "name": "test_user",
+            "phone_number": "1111"
+        },
+        {
+            "_id": 7,
+            "name": "updated_contact",
+            "phone_number": "0000"
+        }
+    ],
+    "next_id": 9
 }
