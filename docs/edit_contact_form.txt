@@ -1,0 +1,38 @@
+Help on module edit_contact_form:
+
+NAME
+    edit_contact_form
+
+FILE
+    /Users/eugenezayats/Documents/GitHub/kpi_lab1/ui/forms/edit_contact_form.py
+
+CLASSES
+    npyscreen.fmActionForm.ActionForm(npyscreen.fmForm.Form)
+        EditContactForm
+    
+    class EditContactForm(npyscreen.fmActionForm.ActionForm)
+     |  Methods defined here:
+     |  
+     |  afterEditing(self)
+     |      Lifecycle function that called after form changed
+     |      in both submitted or canceled cases.
+     |  
+     |  create(self)
+     |      Lifecycle function that called when form already initialized.
+     |      Setup the form
+     |  
+     |  on_cancel(self)
+     |      Function that called when form is canceled.
+     |      Switches app to previous form
+     |  
+     |  on_ok(self)
+     |      Function that called when form is submitted.
+     |      Updates contact or notify user about an error
+     |  
+     |  set_contact(self, contact)
+     |      Function that sets contact property of the form
+     |      :param contact: Contact object
+     |  
+     |  upd_contact(self)
+     |      Function that updates contact and notify user
+     |      about successful operation or error

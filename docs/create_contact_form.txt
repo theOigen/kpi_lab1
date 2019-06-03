@@ -1,0 +1,37 @@
+Help on module create_contact_form:
+
+NAME
+    create_contact_form
+
+FILE
+    /Users/eugenezayats/Documents/GitHub/kpi_lab1/ui/forms/create_contact_form.py
+
+CLASSES
+    npyscreen.fmActionForm.ActionForm(npyscreen.fmForm.Form)
+        CreateContactForm
+    
+    class CreateContactForm(npyscreen.fmActionForm.ActionForm)
+     |  Methods defined here:
+     |  
+     |  afterEditing(self)
+     |      Lifecycle function that called after form changed
+     |      in both submitted or canceled cases.
+     |  
+     |  create(self)
+     |      Lifecycle function that called when form already initialized.
+     |      Setup the form
+     |  
+     |  on_cancel(self)
+     |      Function that called when form is canceled
+     |      Switches app to previous form
+     |  
+     |  on_ok(self)
+     |      Function that called when form is submitted.
+     |      Creates contact, adds him to contacts array via contacts manager
+     |      and switches app to MAIN form if everything is valid.
+     |      Else notifies user about an error.
+
+FUNCTIONS
+    notify_about_success(new_contact)
+        Notifies user about successful creating of a contact
+        :param new_contact: valid Contact object

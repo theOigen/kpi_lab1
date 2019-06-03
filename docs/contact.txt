@@ -1,0 +1,51 @@
+Help on module contact:
+
+NAME
+    contact
+
+FILE
+    /Users/eugenezayats/Documents/GitHub/kpi_lab1/src/contact.py
+
+DESCRIPTION
+    The "Contact" module
+    The module contains a constructor, getter and setter functions to access structure fields
+
+CLASSES
+    Contact
+    
+    class Contact
+     |  Methods defined here:
+     |  
+     |  __init__(self, _id, name, phone_number)
+     |      Initializator of an object
+     |      :param _id: unique integer identifier
+     |      :param name: string that specify the name
+     |      :param phone_number: string that specify the phone number
+     |  
+     |  get_id(self)
+     |      :return: id of a contact
+     |  
+     |  get_name(self)
+     |      :return: name of a contact
+     |  
+     |  get_phone_number(self)
+     |      :return: phone number of a contact
+     |  
+     |  set_id(self, _id)
+     |      Set the __id property
+     |      :param _id: unique integer identifier
+     |  
+     |  set_name(self, name)
+     |      Set the __name property
+     |      :param name: new name for contact
+     |  
+     |  set_phone_number(self, phone_number)
+     |      Set the __phone_number property
+     |      :param phone_number: new phone number for contact
+     |  
+     |  to_dict(self)
+     |      Function that converts Contact object to dictionary,
+     |      used for serialize the object
+     |      :return: dictionary with _id, name and phone_number fields
+
+

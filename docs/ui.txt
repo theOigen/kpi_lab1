@@ -1,0 +1,30 @@
+Help on module ui:
+
+NAME
+    ui
+
+FILE
+    /Users/eugenezayats/Documents/GitHub/kpi_lab1/ui/ui.py
+
+CLASSES
+    npyscreen.apNPSApplicationManaged.NPSAppManaged(npyscreen.apNPSApplication.NPSApp)
+        ConsoleUI
+    
+    class ConsoleUI(npyscreen.apNPSApplicationManaged.NPSAppManaged)
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  onCleanExit(self)
+     |      Lifecycle function that called when app exit.
+     |  
+     |  onStart(self)
+     |      Lifecycle function that called when app starts.
+     |      Loads contacts and set all UI forms
+     |  
+     |  update_contacts_form(self)
+     |      Function that updates All Contacts form
+     |
+
+

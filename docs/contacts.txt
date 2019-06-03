@@ -1,0 +1,67 @@
+Help on module contacts:
+
+NAME
+    contacts
+
+FILE
+    /Users/eugenezayats/Documents/GitHub/kpi_lab1/src/contacts.py
+
+CLASSES
+    ContactsManager
+    
+    class ContactsManager
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |      Initializator of an object
+     |  
+     |  add_contact(self, contact)
+     |      :param contact: Contact object to add
+     |      :return: True/False depending on success/failure adding
+     |  
+     |  delete_contact(self, contact_index)
+     |      :param contact_index: an integer indicating the
+     |      position of the element in the array
+     |      :return: True/False depending on success/failure deleting
+     |  
+     |  delete_contact_by_id(self, contact_id)
+     |      :param contact_id: an integer indicating the id of the element
+     |      :return: True/False depending on success/failure deleting
+     |  
+     |  get_contact_by_id(self, _id)
+     |      :param _id: an integer indicating the id of the element
+     |      :return: None if there's no contact with such id OR element from array
+     |  
+     |  get_contact_by_index(self, index)
+     |      :param index: an integer indicating the
+     |      position of the element in the array
+     |      :return: None if index is invalid OR element from array
+     |  
+     |  get_contacts(self)
+     |      :return: contacts array
+     |  
+     |  get_next_id(self)
+     |      :return: __next_id propery
+     |  
+     |  load_contacts(self, file_name='/Users/eugenezayats/Documents/GitHub/kpi_lab1/data.json')
+     |      Function that load cache from file
+     |      :param file_name: file to load
+     |      :return: True/False depending on success/failure loading
+     |  
+     |  save_contacts(self, file_name='/Users/eugenezayats/Documents/GitHub/kpi_lab1/data.json')
+     |      Function that save cache to file
+     |      :param file_name: file to save
+     |      :return: True which means a success of saving
+     |  
+     |  update_contact(self, updated)
+     |      :param updated: Contact object to update
+     |      :return: True/False depending on success/failure updating
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods defined here:
+     |  
+     |  validate_contact(contact)
+     |      :param contact: Contact object
+     |      :return: True/False depending on success/failure validation
+
+

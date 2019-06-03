@@ -33,12 +33,7 @@
         {
             "_id": 12,
             "name": "test_user",
-            "phone_number": "1111"
-        },
-        {
-            "_id": 13,
-            "name": "updated_contact",
-            "phone_number": "0000"
+            "phone_number": "1111sad"
         }
     ],
     "next_id": 15

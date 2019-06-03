@@ -1,0 +1,33 @@
+Help on module all_contacts_form:
+
+NAME
+    all_contacts_form
+
+FILE
+    /Users/eugenezayats/Documents/GitHub/kpi_lab1/ui/forms/all_contacts_form.py
+
+CLASSES
+    npyscreen.fmActionFormV2.ActionFormV2(npyscreen.fmForm.FormBaseNew)
+        AllContactsForm
+    
+    class AllContactsForm(npyscreen.fmActionFormV2.ActionFormV2)
+     |  Methods defined here:
+     |  
+     |  create(self)
+     |      Lifecycle function that called when form already initialized.
+     |      Setup the form
+     |  
+     |  on_cancel(self)
+     |      Function that called when form is canceled.
+     |      Switches app to previous form
+     |  
+     |  on_ok(self)
+     |      Function that called when form is submitted.
+     |      Switches app to EditCont form or delete chosen contact or
+     |      notifies user about error
+     |  
+     |  switch_to_EditCont_form(self)
+     |      Function that switches app to EditContact form
+     |  
+     |  upd(self)
+     |      Function that updates form state

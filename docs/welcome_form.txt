@@ -1,0 +1,29 @@
+Help on module welcome_form:
+
+NAME
+    welcome_form
+
+FILE
+    /Users/eugenezayats/Documents/GitHub/kpi_lab1/ui/forms/welcome_form.py
+
+CLASSES
+    npyscreen.fmFormWithMenus.FormWithMenus(npyscreen.fmForm.Form, npyscreen.wgNMenuDisplay.HasMenus)
+        WelcomeForm
+    
+    class WelcomeForm(npyscreen.fmFormWithMenus.FormWithMenus)
+     |  Methods defined here:
+     |  
+     |  all_contacts(self)
+     |      Function that switches app to AllContacts form
+     |  
+     |  create(self)
+     |      Lifecycle function that called when form already initialized.
+     |      Setup the form
+     |  
+     |  create_contact(self)
+     |      Function that switches app to CreateContact form
+     |  
+     |  exit(self)
+     |      Function that called when the user exits the main form.
+     |      Stops the application
+

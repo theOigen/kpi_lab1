@@ -1,0 +1,21 @@
+Help on module fs:
+
+NAME
+    fs
+
+FILE
+    /Users/eugenezayats/Documents/GitHub/kpi_lab1/src/fs.py
+
+FUNCTIONS
+    read_json_file(file_name)
+        Function that reads a file
+        :param file_name: file to read
+        :return: dictionary with array of contacts and next_id field
+    
+    save_json_file(file_name, src_object)
+        Function that writes data to a file
+        :param file_name: file to write
+        :param src_object: dictionary with array of contacts
+        and next_id field to save
+
+
